@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Kinopoisk_Films_app_study</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="defaultText">default text</string>
 </resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/filmsListFragment">
+
+    <fragment
+        android:id="@+id/filmsListFragment"
+        android:name="by.savushkin.study.geekbrains.kinopoisk_films.FilmsListFragment"
+        android:label="fragment_films_list"
+        tools:layout="@layout/fragment_films_list" >
+        <action
+            android:id="@+id/action_filmsListFragment_to_filmDetailFragment"
+            app:destination="@id/filmDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filmDetailFragment"
+        android:name="by.savushkin.study.geekbrains.kinopoisk_films.FilmDetailFragment"
+        android:label="fragment_film_detail"
+        tools:layout="@layout/fragment_film_detail" />
+</navigation>
