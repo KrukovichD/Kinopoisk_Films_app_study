@@ -7,16 +7,22 @@
 
     <fragment
         android:id="@+id/filmsListFragment"
-        android:name="by.savushkin.study.geekbrains.kinopoisk_films.FilmsListFragment"
+        android:name="by.savushkin.study.geekbrains.kinopoisk_films.presentation.fragments.FilmsListFragment"
         android:label="fragment_films_list"
-        tools:layout="@layout/fragment_films_list" >
+        tools:layout="@layout/fragment_films_list"
+        app:defaultNavHost="true">
         <action
             android:id="@+id/action_filmsListFragment_to_filmDetailFragment"
             app:destination="@id/filmDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/filmDetailFragment"
-        android:name="by.savushkin.study.geekbrains.kinopoisk_films.FilmDetailFragment"
+        android:name="by.savushkin.study.geekbrains.kinopoisk_films.presentation.fragments.FilmDetailFragment"
         android:label="fragment_film_detail"
-        tools:layout="@layout/fragment_film_detail" />
+        tools:layout="@layout/fragment_film_detail" >
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="462682" />
+    </fragment>
 </navigation>
