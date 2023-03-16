@@ -10,17 +10,21 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import by.savushkin.study.geekbrains.kinopoisk_films.FilmsListViewModel
+import by.savushkin.study.geekbrains.kinopoisk_films.App
+import by.savushkin.study.geekbrains.kinopoisk_films.MainViewModel
 import by.savushkin.study.geekbrains.kinopoisk_films.R
 import by.savushkin.study.geekbrains.kinopoisk_films.databinding.FilmsItemBinding
 import by.savushkin.study.geekbrains.kinopoisk_films.databinding.FragmentFilmsListBinding
-import by.savushkin.study.geekbrains.kinopoisk_films.domain.model.FilmData
+import by.savushkin.study.geekbrains.kinopoisk_films.di.AppComponent
+import by.savushkin.study.geekbrains.kinopoisk_films.domain.model.FilmItemList
 
 class FilmsListFragment : Fragment() {
     private var _binding: FragmentFilmsListBinding? = null
     private val recyclerViewAdapter = RecyclerViewAdapter()
-    private val viewModel: FilmsListViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels { getAppComponent().viewModelsFactory() }
 
+    private fun Fragment.getAppComponent(): AppComponent =
+        (requireNotNull(activity).application as App).appComponent
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,11 +34,13 @@ class FilmsListFragment : Fragment() {
             inflater, container, false
         )
         val manager = GridLayoutManager(activity, 2)
+
         _binding!!.rvListFilms.layoutManager = manager
 
         _binding!!.rvListFilms.adapter = recyclerViewAdapter
 
-        viewModel.getList()
+        viewModel.fetchData()
+        //viewModel.getList()
 
         viewModel.films.observe(
             viewLifecycleOwner
@@ -59,10 +65,11 @@ class FilmsListFragment : Fragment() {
         _binding = null
     }
 }
+
 private class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
-    private val items = mutableListOf<FilmData>()
-    var onItemClickListener: ((FilmData) -> Unit)? = null
+    private val items = mutableListOf<FilmItemList>()
+    var onItemClickListener: ((FilmItemList) -> Unit)? = null
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -88,7 +95,7 @@ private class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.Vie
     override fun getItemCount() = items.size
 
     fun setItems(
-        items: List<FilmData>
+        items: List<FilmItemList>
     ) {
         this.items.clear()
         this.items.addAll(items)
@@ -102,10 +109,10 @@ private class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.Vie
     ) {
 
         fun bind(
-            filmData: FilmData
+            filmItem: FilmItemList
         ) = with(binding) {
             //ivPoster
-            tvFilmFame.text = filmData.name
+            tvFilmFame.text = filmItem.name
         }
     }
 }

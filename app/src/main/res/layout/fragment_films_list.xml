@@ -6,12 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".presentation.fragments.FilmsListFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_list_films"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background"
-        app:layout_constraintBottom_toTopOf="@+id/clear_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list_films"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 </FrameLayout>
