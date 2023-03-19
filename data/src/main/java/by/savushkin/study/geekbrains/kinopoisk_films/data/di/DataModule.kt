@@ -1,4 +1,4 @@
-package by.savushkin.study.geekbrains.kinopoisk_films.di
+package by.savushkin.study.geekbrains.kinopoisk_films.data.di
 
 import android.content.Context
 import by.savushkin.study.geekbrains.kinopoisk_films.data.network.KinopoiskApiRepositiryImp
@@ -33,3 +33,4 @@ class DataModule {
         )
     }
 }
+

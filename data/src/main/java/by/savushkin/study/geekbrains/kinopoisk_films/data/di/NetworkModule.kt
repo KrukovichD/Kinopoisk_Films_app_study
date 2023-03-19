@@ -1,4 +1,4 @@
-package by.savushkin.study.geekbrains.kinopoisk_films.di
+package by.savushkin.study.geekbrains.kinopoisk_films.data.di
 
 import dagger.Module
 import dagger.Provides
